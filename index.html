@@ -141,7 +141,7 @@
   <aside class="filters" role="region" aria-label="필터">
     <div class="wrap">
       <form id="filterForm" class="filters" role="search">
-        <div class="field"><label for="fSort">정렬</label><select id="fSort" name="sort"><option>인기순</option><option>최신순</option><option>평점순</option></select></div>
+        <div class="field"><label for="fSort">정렬</label><select id="fSort" name="sort"><option>전체</option><option>최신순</option><option>평점순</option></select></div>
         <div class="field"><label for="fType">주거형태</label><select id="fType" name="type"><option>전체</option><option>아파트</option><option>빌라</option><option>원룸</option><option>오피스텔</option><option>주택</option></select></div>
         <div class="field"><label for="fArea">전용면적</label><select id="fArea" name="area"><option>전체</option><option>~10평</option><option>10~20평</option><option>20~30평</option><option>30평~</option></select></div>
         <div class="field"><label for="fRooms">방 개수</label><select id="fRooms" name="rooms"><option>전체</option><option>1</option><option>2</option><option>3+</option></select></div>
@@ -282,7 +282,7 @@
 
   // ===================== 전역 상태 =====================
   const state = {
-    filters: { sort:'인기순', type:'전체', area:'전체', rooms:'전체', bays:'전체', family:'전체', style:'전체' },
+    filters: { sort:'전체', type:'전체', area:'전체', rooms:'전체', bays:'전체', family:'전체', style:'전체' },
     limit: 12,
     likes: JSON.parse(localStorage.getItem('likes.v1')||'{}'),
     bookmarks: JSON.parse(localStorage.getItem('bookmarks.v1')||'[]'),
@@ -354,7 +354,7 @@
       (f.family==='전체' || x.family===f.family) &&
       (f.style==='전체' || x.style===f.style)
     );
-    if(f.sort==='인기순') arr.sort((a,b)=>b.pop-a.pop);
+    if(f.sort==='전체') arr.sort((a,b)=>b.pop-a.pop);
     if(f.sort==='최신순') arr.sort((a,b)=>b.ts-a.ts);
     if(f.sort==='평점순') arr.sort((a,b)=>b.rating-a.rating);
     return arr;
